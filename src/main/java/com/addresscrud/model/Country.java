@@ -17,22 +17,10 @@ import java.util.List;
 @NamedQuery(name="Country.findAll", query="SELECT c FROM Country c")
 public class Country {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id_country", unique=true, nullable=false)
     private long id;
-
-    @Column(name="country_name", nullable=false, length=256)
     private String countryName;
-
-    @Column(name="phone_code", nullable=false, length=5)
     private String phoneCode;
-
-    //bi-directional many-to-one association to City
-    @OneToMany()
     private List<City> cities;
-
-
 
     public Country() {
     }
@@ -41,6 +29,9 @@ public class Country {
         this.countryName = countryName;
     }
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id_country", unique=true, nullable=false)
     public long getId() {
         return id;
     }
@@ -53,10 +44,12 @@ public class Country {
         return countryName;
     }
 
+    @Column(name="country_name", nullable=false, length=256)
     public void setCountryName(String countryName) {
         this.countryName = countryName;
     }
 
+    @Column(name="phone_code", nullable=false, length=5)
     public String getPhoneCode() {
         return phoneCode;
     }
@@ -65,6 +58,8 @@ public class Country {
         this.phoneCode = phoneCode;
     }
 
+    //bi-directional many-to-one association to City
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     public List<City> getCities() {
         return cities;
     }

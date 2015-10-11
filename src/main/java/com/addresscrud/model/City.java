@@ -11,29 +11,27 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name="city")
-@NamedQuery(name="City.findAll", query="SELECT c FROM City c")
+@Table(name="cities")
+@NamedQuery(name="Cities.findAll", query="SELECT c FROM Cities c")
 public class City {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name="id_city", unique=true, nullable=false)
     private long id;
-
-    @Column(name="street", nullable=false, length=250)
     private String cityName;
+    private Country country;
 
-//    Country country;
 
     public City() {
     }
 
     public City(String cityName, Country country) {
         this.cityName = cityName;
-//        this.country = country;
+        this.country = country;
+
     }
 
-
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    @Column(name="id_city", unique=true, nullable=false)
     public long getId() {
         return id;
     }
@@ -42,6 +40,7 @@ public class City {
         this.id = id;
     }
 
+    @Column(name="city_name", nullable=false, length=250)
     public String getCityName() {
         return cityName;
     }
@@ -50,11 +49,13 @@ public class City {
         this.cityName = cityName;
     }
 
-//    public Country getCountry() {
-//        return country;
-//    }
-//
-//    public void setCountry(Country country) {
-//        this.country = country;
-//    }
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_country", nullable = false)
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 }

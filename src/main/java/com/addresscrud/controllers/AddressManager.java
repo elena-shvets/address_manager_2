@@ -1,7 +1,9 @@
 package com.addresscrud.controllers;
 
 
+import com.addresscrud.dto.AddressDto;
 import com.addresscrud.model.Address;
+import com.addresscrud.model.Countries;
 import com.addresscrud.service.AddressService;
 import com.addresscrud.service.PhoneService;
 import org.apache.log4j.Logger;
@@ -12,7 +14,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -46,20 +47,31 @@ public class AddressManager {
 
     }
 
+//    @RequestMapping(value = "/add", method = RequestMethod.POST)
+//    @ResponseBody
+//    public ResponseEntity<Address> addAddress(@RequestBody Address address){
+//
+////        if(address.getId() == 0){
+//            address.setId(null);
+//            addressService.save(address);
+//
+//            return new ResponseEntity(HttpStatus.OK);
+////        }
+//
+////        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+//    }
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Address> addAddress(@RequestBody Address address,HttpServletResponse response){
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        if(address.getId() == 0){
+    public ResponseEntity<Address> addAddress(@RequestBody AddressDto addressDto){
 
-//        Address address = new Address();
-//            address.setId(4);
-//            address.setAddressContent(addressDto.getAddress());
-            addressService.save(address);
-            return new ResponseEntity(HttpStatus.OK);
-        }
 
-        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        Address address = new Address();
+        address.setAddressContent(addressDto.getAddress());
+        address.setCountries(Countries.valueOf(addressDto.getCountry()));
+        address.setPhones(addressDto.getPhones());
+
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @RequestMapping(value = "/{addressId}", method = RequestMethod.GET)

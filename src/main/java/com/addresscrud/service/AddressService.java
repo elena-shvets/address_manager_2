@@ -17,7 +17,7 @@ public interface AddressService {
     Address save(Address address);
     Address update(Address address);
     List<Address> findAll();
-    Address findOneById(long id);
+    Address findOneById(Long id);
     void delete(Address address);
     Address findByStreet(String street);
 

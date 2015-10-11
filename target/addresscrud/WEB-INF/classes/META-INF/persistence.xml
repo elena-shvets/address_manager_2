@@ -4,11 +4,12 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>com.addresscrud.model.Address</class>
         <class>com.addresscrud.model.Phone</class>
-        <class>com.addresscrud.model.City</class>
+        <!--<class>com.addresscrud.model.City</class>-->
+        <!--<class>com.addresscrud.model.Country</class>-->
 
 
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
-        <!--<validation-mode>NONE</validation-mode>-->
+        <validation-mode>NONE</validation-mode>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>

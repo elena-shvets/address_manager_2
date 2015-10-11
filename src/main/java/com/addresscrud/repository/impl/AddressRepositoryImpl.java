@@ -1,6 +1,7 @@
 package com.addresscrud.repository.impl;
 
 import com.addresscrud.model.Address;
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import com.addresscrud.repository.AddressRepository;
@@ -21,6 +22,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class AddressRepositoryImpl implements AddressRepository {
+    static final Logger LOG = Logger.getLogger(AddressRepositoryImpl.class);
 
     @PersistenceContext
     EntityManager entityManager;
@@ -28,6 +30,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     @Override
     public Address save(Address address) {
         entityManager.persist(address);
+
         return address;
     }
 
@@ -46,7 +49,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     }
 
     @Override
-    public Address findOneById(long id) {
+    public Address findOneById(Long id) {
         return entityManager.find(Address.class, id);
     }
 

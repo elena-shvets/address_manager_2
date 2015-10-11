@@ -1,6 +1,7 @@
 package com.addresscrud.service.Impl;
 
 import com.addresscrud.model.Address;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.addresscrud.repository.AddressRepository;
@@ -18,6 +19,8 @@ import java.util.List;
 
 @Service("addressService")
 public class AddressServiceImpl implements AddressService {
+
+    static final Logger LOG = Logger.getLogger(AddressServiceImpl.class);
 
     @Autowired
     AddressRepository addressRepository;
@@ -41,7 +44,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Address findOneById(long id) {
+    public Address findOneById(Long id) {
         return addressRepository.findOneById(id);
     }
 
