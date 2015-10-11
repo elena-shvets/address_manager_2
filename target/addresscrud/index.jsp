@@ -17,6 +17,8 @@
     <div>Phone 3: <input class="phone" maxlength="15" name="phone3" placeholder="Enter phone..." size="40" value=""></div>
     <div>Phone 4: <input class="phone" maxlength="15" name="phone4" placeholder="Enter phone..." size="40" value=""></div>
     <div>Phone 5: <input class="phone" maxlength="15" name="phone5" placeholder="Enter phone..." size="40" value=""></div>
+
+    <button class="button" id="add_button" style="border: solid black">ADD</button>
 </form>
 </body>
 </html>

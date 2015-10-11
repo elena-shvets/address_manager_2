@@ -39,7 +39,7 @@ public class CityRepositoryImpl implements CityRepository {
 
 
     @Override
-    public List<City> findByCountry(Country country, Sort sort) {
+    public List<City> findByCountry(Country country) {
         return null;
     }
 

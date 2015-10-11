@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -47,7 +48,8 @@ public class AddressManager {
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Address> addAddress(@RequestBody Address address){
+    public ResponseEntity<Address> addAddress(@RequestBody Address address,HttpServletResponse response){
+        response.setHeader("Access-Control-Allow-Origin", "*");
         if(address.getId() == 0){
 
 //        Address address = new Address();
