@@ -20,7 +20,7 @@ import java.util.List;
 @Service("addressService")
 public class AddressServiceImpl implements AddressService {
 
-    static final Logger LOG = Logger.getLogger(AddressServiceImpl.class);
+   private static final Logger LOG = Logger.getLogger(AddressServiceImpl.class);
 
     @Autowired
     private AddressRepository addressRepository;

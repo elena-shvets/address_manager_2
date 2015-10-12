@@ -26,7 +26,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/address")
 public class AddressManager {
-    static final Logger LOG = Logger.getLogger(AddressManager.class);
+    private static final Logger LOG = Logger.getLogger(AddressManager.class);
 
     @Autowired
     private AddressService addressService;

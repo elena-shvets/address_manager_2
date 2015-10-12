@@ -22,7 +22,7 @@ import java.util.List;
 @Repository
 @Transactional
 public class AddressRepositoryImpl implements AddressRepository {
-    static final Logger LOG = Logger.getLogger(AddressRepositoryImpl.class);
+    private static final Logger LOG = Logger.getLogger(AddressRepositoryImpl.class);
 
     @PersistenceContext
    private EntityManager entityManager;
