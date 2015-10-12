@@ -25,7 +25,7 @@ public class AddressRepositoryImpl implements AddressRepository {
     static final Logger LOG = Logger.getLogger(AddressRepositoryImpl.class);
 
     @PersistenceContext
-    EntityManager entityManager;
+   private EntityManager entityManager;
 
     @Override
     public Address save(Address address) {

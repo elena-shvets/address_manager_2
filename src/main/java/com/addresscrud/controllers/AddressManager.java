@@ -29,10 +29,10 @@ public class AddressManager {
     static final Logger LOG = Logger.getLogger(AddressManager.class);
 
     @Autowired
-    AddressService addressService;
+    private AddressService addressService;
 
     @Autowired
-    PhoneService phoneService;
+    private PhoneService phoneService;
 
 
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
@@ -65,9 +65,9 @@ public class AddressManager {
     }
 
 
-    @RequestMapping(value = "/removeAddress", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/removeAddress", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Address> deleteAddress(@RequestParam(value = "addressId") long addressId) {
+    public ResponseEntity<Address> deleteAddress(long addressId) {
         if (addressId == 0) {
             LOG.info("Can not delete address because request parameters are not correct");
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);

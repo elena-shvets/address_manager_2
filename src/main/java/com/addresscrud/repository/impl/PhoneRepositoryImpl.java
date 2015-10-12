@@ -23,7 +23,7 @@ import java.util.List;
 public class PhoneRepositoryImpl implements PhoneRepository{
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public Phone save(Phone phone) {

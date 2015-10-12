@@ -20,7 +20,7 @@ import java.util.List;
 public class PhoneServiceImpl implements PhoneService {
 
     @Autowired
-    PhoneRepository phoneRepository;
+    private PhoneRepository phoneRepository;
 
     @Override
     public Phone save(Phone phone) {

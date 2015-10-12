@@ -22,7 +22,7 @@ import java.util.List;
 public class CityRepositoryImpl implements CityRepository {
 
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Override
     public City save(City city) {

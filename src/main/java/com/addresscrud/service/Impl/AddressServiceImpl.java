@@ -23,7 +23,7 @@ public class AddressServiceImpl implements AddressService {
     static final Logger LOG = Logger.getLogger(AddressServiceImpl.class);
 
     @Autowired
-    AddressRepository addressRepository;
+    private AddressRepository addressRepository;
 
     @Override
     public Address save(Address address) {
