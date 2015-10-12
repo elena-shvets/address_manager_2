@@ -69,7 +69,7 @@ public class AddressManager {
         Address address = new Address();
         address.setAddressContent(addressDto.getAddress());
         address.setCountries(Countries.valueOf(addressDto.getCountry()));
-        address.setPhones(addressDto.getPhones());
+
 
         return new ResponseEntity(HttpStatus.OK);
     }

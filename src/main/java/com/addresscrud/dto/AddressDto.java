@@ -16,7 +16,7 @@ public class AddressDto {
 
     private String country;
     private String address;
-    private ArrayList<Phone> phones;
+    private ArrayList<String> phones;
 
 
     public String getCountry() {
@@ -35,11 +35,11 @@ public class AddressDto {
         this.address = address;
     }
 
-    public ArrayList<Phone> getPhones() {
+    public ArrayList<String> getPhones() {
         return phones;
     }
 
-    public void setPhones(ArrayList<Phone> phones) {
+    public void setPhones(ArrayList<String> phones) {
         this.phones = phones;
     }
 }
