@@ -24,7 +24,7 @@ public class Address implements Serializable{
 
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_address", unique=true, nullable=false)
     public Long getId() {
         return id;

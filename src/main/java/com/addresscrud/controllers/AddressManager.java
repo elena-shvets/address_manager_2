@@ -1,7 +1,9 @@
 package com.addresscrud.controllers;
 
 
+import com.addresscrud.dto.AddressDto;
 import com.addresscrud.model.Address;
+import com.addresscrud.model.Countries;
 import com.addresscrud.service.AddressService;
 import com.addresscrud.service.PhoneService;
 import org.apache.log4j.Logger;
@@ -33,10 +35,9 @@ public class AddressManager {
     PhoneService phoneService;
 
 
-
     @RequestMapping(value = "/getAll", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Address> getAllAddresses(){
+    public ResponseEntity<Address> getAllAddresses() {
         List<Address> addresses = addressService.findAll();
         if (CollectionUtils.isEmpty(addresses)) {
             return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -45,32 +46,16 @@ public class AddressManager {
 
     }
 
+
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
-    public ResponseEntity<Address> addAddress(@RequestBody Address address){
-
-//        if(address.getId() == 0){
-            address.setId(null);
-            addressService.save(address);
-
-            return new ResponseEntity(HttpStatus.OK);
-//        }
-
-//        return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+    public ResponseEntity<Address> addAddress(@RequestBody AddressDto addressDto) {
+        Address address = new Address();
+        address.setAddressContent(addressDto.getAddress());
+        address.setCountries(Countries.valueOf(addressDto.getCountry()));
+        addressService.save(address);
+        return new ResponseEntity(HttpStatus.OK);
     }
-
-//    @RequestMapping(value = "/add", method = RequestMethod.POST)
-//    @ResponseBody
-//    public ResponseEntity<Address> addAddress(@RequestBody AddressDto addressDto){
-//
-//
-//        Address address = new Address();
-//        address.setAddressContent(addressDto.getAddress());
-//        address.setCountries(Countries.valueOf(addressDto.getCountry()));
-//
-//        addressService.save(address);
-//        return new ResponseEntity(HttpStatus.OK);
-//    }
 
     @RequestMapping(value = "/{addressId}", method = RequestMethod.GET)
     @ResponseBody
@@ -80,14 +65,13 @@ public class AddressManager {
     }
 
 
-    @RequestMapping(value = "/removeAddress", method = RequestMethod.POST)
+    @RequestMapping(value = "/removeAddress", method = RequestMethod.DELETE)
     @ResponseBody
-    public  ResponseEntity<Address> deleteAddress(@RequestParam Long addressId){
-//        response.setHeader("Access-Control-Allow-Origin", "*");
-//        if(addressId == 0) {
-//        LOG.info("Can not delete address because request parameters are not correct");
-//            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
-//        }
+    public ResponseEntity<Address> deleteAddress(@RequestParam(value = "addressId") long addressId) {
+        if (addressId == 0) {
+            LOG.info("Can not delete address because request parameters are not correct");
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
         Address address = addressService.findOneById(addressId);
         addressService.delete(address);
         return new ResponseEntity<Address>(HttpStatus.OK);

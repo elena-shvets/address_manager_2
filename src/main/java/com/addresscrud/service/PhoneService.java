@@ -6,7 +6,11 @@ import com.addresscrud.model.Phone;
 import java.util.List;
 
 /**
- * Created by elena on 09.10.15.
+ * Class {@link com.addresscrud.service.PhoneService}
+ *
+ * @author Elena Shvets
+ * @version 1.0
+ * @since 08.10.15
  */
 public interface PhoneService {
 

@@ -12,7 +12,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="cities")
-@NamedQuery(name="Cities.findAll", query="SELECT c FROM Cities c")
+@NamedQuery(name="Cities.findAll", query="SELECT c FROM City c")
 public class City {
 
     private long id;
