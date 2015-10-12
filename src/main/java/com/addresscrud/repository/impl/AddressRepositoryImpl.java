@@ -29,8 +29,13 @@ public class AddressRepositoryImpl implements AddressRepository {
 
     @Override
     public Address save(Address address) {
-        entityManager.persist(address);
+        //try {
+            entityManager.persist(address);
+        /*}catch (Exception e){
 
+            LOG.error(e.getMessage());
+            e.printStackTrace();
+        }*/
         return address;
     }
 
