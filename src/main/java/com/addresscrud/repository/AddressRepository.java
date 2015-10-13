@@ -20,6 +20,7 @@ public interface AddressRepository {
     Address findOneById(Long id);
     void delete(Address address);
     Address findByStreet(String street);
+    boolean checkAddressForExistById(Long id);
 
 
 }

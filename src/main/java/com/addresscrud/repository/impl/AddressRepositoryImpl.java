@@ -63,4 +63,9 @@ public class AddressRepositoryImpl implements AddressRepository {
     public Address findByStreet(String street) {
         return entityManager.find(Address.class, street);
     }
+
+    @Override
+    public boolean checkAddressForExistById(Long id) {
+        return entityManager.find(Address.class, id)!=null;
+    }
 }

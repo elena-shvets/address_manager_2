@@ -1,12 +1,13 @@
 package com.addresscrud.service.Impl;
 
 import com.addresscrud.model.Address;
+import com.addresscrud.repository.AddressRepository;
+import com.addresscrud.service.AddressService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.addresscrud.repository.AddressRepository;
-import com.addresscrud.service.AddressService;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 /**
@@ -24,6 +25,9 @@ public class AddressServiceImpl implements AddressService {
 
     @Autowired
     private AddressRepository addressRepository;
+
+    @Autowired
+    private EntityManager entityManager;
 
     @Override
     public Address save(Address address) {
@@ -58,5 +62,13 @@ public class AddressServiceImpl implements AddressService {
     @Override
     public Address findByStreet(String street) {
         return addressRepository.findByStreet(street);
+    }
+
+    @Override
+    public boolean checkAddressForExistById(Long id) {
+        if(!entityManager.contains(findOneById(id))){
+            return addressRepository.checkAddressForExistById(id);
+        }
+        return true;
     }
 }
