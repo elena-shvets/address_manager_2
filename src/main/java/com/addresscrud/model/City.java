@@ -29,6 +29,7 @@ public class City {
 
     }
 
+
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name="id_city", unique=true, nullable=false)
